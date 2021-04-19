@@ -16,7 +16,6 @@ The "Channel" server translate stdin/stdout to TCP connection.
 The "Service" server translate Denops RPC to corresponding protocol of Vim/Neovim and it holds all plugins as worker threads.
 
 ```uml
-@start
 archimate #Application "Vim/Neovim" as host <<application-process>>
 archimate #Application "Channel server" as channel <<application-process>>
 archimate #Application "Service server" as service <<application-process>>
@@ -29,7 +28,6 @@ channel <-> service: TCP
 service <.down.> pluginA: Worker IO
 service <.down.> pluginB: Worker IO
 service <.down.> pluginC: Worker IO
-@end
 ```
 
 ### FAQ
