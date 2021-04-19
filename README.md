@@ -9,26 +9,11 @@
 
 ## Architecture
 
-**NOTE:** Use [Pegmatite](https://chrome.google.com/webstore/detail/pegmatite/jegkfbnfbfnohncpcfcimepibmhlkldo) to render [PlantUML][]s in this README on GitHub.
-
 Denops runs two server processes named "Channel" and "Service".
 The "Channel" server translate stdin/stdout to TCP connection.
 The "Service" server translate Denops RPC to corresponding protocol of Vim/Neovim and it holds all plugins as worker threads.
 
-```uml
-archimate #Application "Vim/Neovim" as host <<application-process>>
-archimate #Application "Channel server" as channel <<application-process>>
-archimate #Application "Service server" as service <<application-process>>
-archimate #Application "Plugin A" as pluginA <<application-service>>
-archimate #Application "Plugin B" as pluginB <<application-service>>
-archimate #Application "Plugin C" as pluginC <<application-service>>
-
-host <-> channel: stdin/stdout
-channel <-> service: TCP
-service <.down.> pluginA: Worker IO
-service <.down.> pluginB: Worker IO
-service <.down.> pluginC: Worker IO
-```
+![Architecture](https://user-images.githubusercontent.com/546312/115285670-19c71100-a189-11eb-8070-9d5849f7359d.png)
 
 ### FAQ
 
